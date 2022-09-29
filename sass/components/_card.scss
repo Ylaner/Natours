@@ -1,0 +1,208 @@
+.card {
+  height: 52rem;
+  position: relative;
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  @media only screen and (max-width: 56.25em), only screen and (hover: none) {
+    height: auto;
+  }
+  &__side {
+    overflow: hidden;
+    border-radius: 0.5rem;
+    height: 52rem;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-backface-visibility: hidden;
+
+    backface-visibility: hidden;
+    box-shadow: 0 1.5rem 4rem rgba($color: $color-black, $alpha: 0.15);
+    transition: all 0.8s ease;
+    @media only screen and (max-width: 56.25em), only screen and (hover: none) {
+      position: relative;
+      height: auto;
+    }
+    &--front {
+      @media only screen and (max-width: 56.25em),
+        only screen and (hover: none) {
+        padding-bottom: 5rem;
+      }
+    }
+
+    &--back {
+      transform: rotateY(180deg);
+      @media only screen and (max-width: 56.25em),
+        only screen and (hover: none) {
+        transform: rotateY(0);
+        margin-top: -6rem;
+        clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+      }
+      &-1 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-secondary-light,
+          $color-secondary-dark
+        );
+      }
+
+      &-2 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light,
+          $color-primary-dark
+        );
+      }
+
+      &-3 {
+        background-image: linear-gradient(
+          to right bottom,
+          $color-tertiary-light,
+          $color-tertiary-dark
+        );
+      }
+    }
+  }
+
+  &:hover &__side--front {
+    transform: rotateY(-180deg);
+    @media only screen and (max-width: 56.25em), only screen and (hover: none) {
+      transform: rotateY(0);
+    }
+  }
+  &:hover &__side--back {
+    transform: rotateY(0);
+  }
+
+  //Front Side style
+  &__image {
+    height: 23rem;
+    // background-position: center;
+    background-size: cover;
+    background-blend-mode: multiply;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    &--1 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-secondary-light,
+          $color-secondary-dark
+        ),
+        url(../img/nat-5.jpg);
+    }
+
+    &--2 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-primary-light,
+          $color-primary-dark
+        ),
+        url(../img/nat-6.jpg);
+    }
+
+    &--3 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-tertiary-light,
+          $color-tertiary-dark
+        ),
+        url(../img/nat-7.jpg);
+    }
+  }
+
+  &__heading {
+    color: $color-white;
+    font-size: 2.8rem;
+    font-weight: 300;
+    position: absolute;
+
+    text-transform: uppercase;
+    text-align: right;
+    top: 12rem;
+    right: 2rem;
+    width: 75%;
+  }
+
+  &__heading-span {
+    padding: 1rem 1.5rem;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+    &--1 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba(255, 185, 0, 0.85),
+        rgba(255, 119, 48, 0.85)
+      );
+    }
+    &--2 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-primary-light, 0.85),
+        rgba($color-primary-dark, 0.85)
+      );
+    }
+
+    &--3 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-tertiary-light, 0.85),
+        rgba($color-tertiary-dark, 0.85)
+      );
+    }
+  }
+
+  &__details {
+    font-size: 1.5rem;
+    width: 85%;
+    padding: 2rem;
+    margin: 0 auto;
+    &-list {
+      list-style: none;
+      text-align: center;
+      & li {
+        display: block;
+        padding: 1rem;
+        &:not(:last-child) {
+          border-bottom: 1px solid $color-grey-light-2;
+        }
+      }
+    }
+  }
+
+  //Back side
+  .card__cta-box {
+    @include absMiddle;
+    width: 90%;
+    text-align: center;
+    @media only screen and (max-width: 56.25em), only screen and (hover: none) {
+      width: 100%;
+      position: relative;
+      top: 0;
+      left: 0;
+      transform: translate(0, 0);
+      padding: 8rem 0;
+    }
+  }
+
+  .cta__content {
+    margin-bottom: 10rem;
+    color: $color-white;
+    @media only screen and (max-width: 56.25em), only screen and (hover: none) {
+      margin-bottom: 3rem;
+    }
+    &--hint {
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    &--price {
+      font-size: 6rem;
+      font-weight: 100;
+      @media only screen and (max-width: 56.25em),
+        only screen and (hover: none) {
+        font-size: 4rem;
+        font-weight: 200;
+      }
+    }
+  }
+}

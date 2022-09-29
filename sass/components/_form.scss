@@ -1,0 +1,108 @@
+.form {
+  &__group:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+
+  &__input {
+    background-color: rgba($color: $color-white, $alpha: 0.9);
+    font-size: 1.5rem;
+    font-family: inherit;
+    color: inherit;
+    display: block;
+    width: 90%;
+    border: none;
+    padding: 1.5rem 2rem;
+    border-radius: 2px;
+    border-bottom: solid 3px transparent;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    &::-webkit-input-placeholder {
+      color: $color-grey-dark-2;
+    }
+
+    &::placeholder {
+      color: $color-grey-dark-2;
+    }
+
+    &:focus {
+      outline: none;
+      border-bottom: 3px solid $color-primary;
+      box-shadow: 0 1rem 2rem rgba($color: $color-black, $alpha: 0.1);
+    }
+
+    &:focus:invalid {
+      border-bottom: 3px solid $color-secondary-dark;
+    }
+
+    // &:not(:focus) {
+
+    // }
+  }
+
+  &__label {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-left: 2rem;
+    margin-top: 0.7rem;
+    display: inline-block;
+    transform: translateY(0);
+    opacity: 1;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+
+  &__input:placeholder-shown + &__label {
+    transform: translateY(-4rem);
+    opacity: 0;
+  }
+
+  &__size {
+    width: 100%;
+  }
+  &__check {
+    display: inline-block;
+    width: 49%;
+    @include respond(tab-port) {
+      display: block;
+      width: 100%;
+      &:not(:last-child) {
+        margin-bottom: 2rem;
+      }
+    }
+  }
+
+  &__radio-label {
+    font-size: 1.6rem;
+    cursor: pointer;
+    position: relative;
+    padding-left: 4.5rem;
+  }
+  &__radio-span {
+    display: inline-block;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    border: 5px solid $color-primary;
+    position: absolute;
+    top: -0.4rem;
+    left: 0;
+  }
+
+  &__radio-span::after {
+    content: "";
+    height: 1.3rem;
+    width: 1.3rem;
+    display: block;
+    border-radius: 50%;
+    background-color: $color-primary;
+    @include absMiddle;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  &__radio-input:checked ~ &__radio-label &__radio-span::after {
+    opacity: 1;
+  }
+  &__radio-input {
+    display: none;
+  }
+}
